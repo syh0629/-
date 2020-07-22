@@ -122,7 +122,9 @@ public class HolidayDao {
 	 * @param s
 	 * @return
 	 */
-	public Holiday selectOneHoliday(Student s) {
+	public List<Holiday> selectListHoliday(Student s) {
+		//new 一个list对象
+		List<Holiday> hos = new ArrayList<>();
 		Holiday holiday = null;//假期对象变量
 		try {
 			String sql = "select * from holiday where hperson=? and role=?";//sql语句
@@ -146,11 +148,12 @@ public class HolidayDao {
 				holiday.setHsta(eq.getString(4));
 				//设置属性
 				holiday.setRole(eq.getInt(5));
+				hos.add(holiday);
 
 			}
 		} catch (Exception e) {//异常捕获
 			e.printStackTrace();//打印堆栈信息
 		}
-		return holiday;//返回
+		return hos;//返回
 	}
 }

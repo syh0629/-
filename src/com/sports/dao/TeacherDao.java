@@ -26,7 +26,7 @@ public class TeacherDao {
 	public Teacher selectTeacherByNameAndPwd(String name,String pwd){
 		Teacher t=null;//老师变量
 		try{
-			String sql="select * from teacher where tname=? and tpwd=?";//sql语句
+			String sql="select * from teacher where username=? and tpwd=?";//sql语句
 			PreparedStatement p = connection.prepareStatement(sql);//获取sql执行器
 			//设置sql参数
 			p.setString(1, name);
@@ -42,6 +42,8 @@ public class TeacherDao {
 				t.setSportid(eq.getInt(4));//设置属性
 				t.setTname(eq.getString(5));//设置属性
 				t.setTpwd(eq.getString(6));//设置属性
+				t.setUsername(eq.getString(7));//设置属性
+				t.setPhone(eq.getString(8));//设置属性
 			}
 		}catch(Exception e){//异常捕获
 			e.printStackTrace();//打印堆栈
@@ -56,9 +58,10 @@ public class TeacherDao {
 	 */
 	public int insertTeacher(Teacher t){
 		int result=0;//返回值
-		String sql = "insert into teacher(rid,sportid,tgid,tname,tpwd) values(?,?,?,?,?)";//sql语句
+		String sql = "insert into teacher(rid,sportid,tgid,tname,tpwd,username,phone) values(?,?,?,?,?,?,?)";//sql语句
 		try {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);//获取sql执行器
+			//设置sql参数
 			prepareStatement.setInt(1, t.getRid());
 			//设置sql参数
 			prepareStatement.setString(4, t.getTname());
@@ -68,6 +71,10 @@ public class TeacherDao {
 			prepareStatement.setInt(2, t.getSportid());
 			//设置sql参数
 			prepareStatement.setInt(3, t.getTgid());
+			//设置sql参数
+			prepareStatement.setString(6, t.getUsername());
+			//设置sql参数
+			prepareStatement.setString(7, t.getPhone());
 			//执行sql语句 获取结果集
 			result = prepareStatement.executeUpdate();
 		} catch (SQLException e) {//异常捕获
@@ -141,6 +148,8 @@ public class TeacherDao {
 				t.setSportid(eq.getInt(4));//设置属性
 				t.setTname(eq.getString(5));//设置属性
 				t.setTpwd(eq.getString(6));//设置属性
+				t.setUsername(eq.getString(7));//设置属性
+				t.setPhone(eq.getString(8));//设置属性
 				ts.add(t);//添加到集合
 			}
 		}catch(Exception e){//异常捕获
@@ -172,6 +181,40 @@ public class TeacherDao {
 				t.setSportid(eq.getInt(4));//设置属性
 				t.setTname(eq.getString(5));//设置属性
 				t.setTpwd(eq.getString(6));//设置属性
+				t.setUsername(eq.getString(7));//设置属性
+				t.setPhone(eq.getString(8));//设置属性
+			}
+		}catch(Exception e){//异常捕获
+			// 打印堆栈
+			e.printStackTrace();
+		}
+		//返回
+		return t;
+	}
+	/**
+	 * 根据username查教练
+	 * @param tid
+	 * @return
+	 */
+	public Teacher selectTeacherbyUsername(String username) {
+		Teacher t=null;//老师对象
+		try{
+			String sql="select * from teacher where username=?";//sql语句
+			PreparedStatement p = connection.prepareStatement(sql);//获取sql执行器
+			//设置sql参数
+			p.setString(1, username);
+			//执行sql语句 获取结果集
+			ResultSet eq = p.executeQuery();
+			while(eq.next()){//遍历结果集
+				t=new Teacher();//new一个老师对象
+				t.setTid(eq.getInt(1));//设置属性
+				t.setRid(eq.getInt(2));//设置属性
+				t.setTgid(eq.getInt(3));//设置属性
+				t.setSportid(eq.getInt(4));//设置属性
+				t.setTname(eq.getString(5));//设置属性
+				t.setTpwd(eq.getString(6));//设置属性
+				t.setUsername(eq.getString(7));//设置属性
+				t.setPhone(eq.getString(8));//设置属性
 			}
 		}catch(Exception e){//异常捕获
 			// 打印堆栈

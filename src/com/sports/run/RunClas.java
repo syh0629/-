@@ -18,8 +18,17 @@ public class RunClas {
 		// 死循环表示系统一直在持续运行
 		while (true) {
 			// 控制台提示信息
-			System.out.println("请选择登陆的用户角色输入角色的代码: 1  管理员    2 教练   3  学员");
+			System.out.println("请选择登陆的用户角色输入角色的代码: 1  管理员    2 教练   3  学员 ");
 			int a = sc.nextInt();
+			System.out.println("请选择功能  1 登录   2 忘记密码");
+			if(sc.nextInt()==2){
+				switch (a) {
+				case 1: mr.passwordForget(); break;
+				case 2: break;
+				case 3: break;
+				}
+				continue;
+			}
 			// 控制台提示信息
 			System.out.println("请输入用户名");
 			String name = sc.next();
@@ -35,11 +44,12 @@ public class RunClas {
 					System.out.println(name + " :欢迎登录");
 					while (true) {
 						// 控制台提示信息
-						System.out.println("请选择所需功能: 1 新增教练   2 新增学生   3 新增训练场  4 修改密码   0 退出");
+						System.out.println("请选择所需功能: 1 新增教练   2 新增学生   3 新增训练场  4 修改密码  5  修改学生教练   0 退出");
 						//接口控制台输入的信息并赋值给a
 						a = sc.nextInt();
 						//根据a的值不同选择不同的功能
 						switch (a) {
+						case 0:break;
 						//当a=1
 						case 1:
 							//调用新增老师方法
@@ -64,6 +74,13 @@ public class RunClas {
 							mr.updatepwd();
 							//退出
 							break;
+						case 5:
+							//调用修改密码方法
+							mr.changeStudentTeacher();
+							//退出
+							break;
+							// 控制台提示信息
+						default: System.out.println("输入有误,请重新输入");
 						}
 						//当a=0
 						if (a == 0) {
@@ -93,6 +110,7 @@ public class RunClas {
 						a = sc.nextInt();
 						//根据a的值不同选择不同的功能
 						switch (a) {
+						case 0:break;
 						//a=1
 						case 1:
 							//调用查看学生的方法
@@ -117,6 +135,8 @@ public class RunClas {
 							tr.lookHoliday();
 							//退出
 							break;
+							// 控制台提示信息
+						default: System.out.println("输入有误,请重新输入");
 						}
 						//a=0
 						if (a == 0) {
@@ -146,6 +166,7 @@ public class RunClas {
 						a = sc.nextInt();
 						//根据a的值选择调用不同的功能
 						switch (a) {
+						case 0:break;
 						//a=1
 						case 1:
 							//调用查看老师的方法
@@ -170,7 +191,10 @@ public class RunClas {
 							sr.lookHoliday();
 							//退出
 							break;
+							// 控制台提示信息
+						default: System.out.println("输入有误,请重新输入");
 						}
+						
 						//a=0
 						if (a == 0) {
 							//退出
