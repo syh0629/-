@@ -355,20 +355,30 @@ public class ManagerRun {
 	}
 
 	public void passwordForget() {
+		// 控制台输出提示
 		System.out.println("请输入用户名");
+		// 接收控制台输入的内容
 		String username = sc.next();
+		// 控制台输出提示
 		System.out.println("请输入姓名");
+		// 接收控制台输入的内容
 		String name = sc.next();
+		// 控制台输出提示
 		System.out.println("请输入手机号");
+		// 接收控制台输入的内容
 		String phone = sc.next();
+		//查询管理员信息
 		Manager forgermanager = md.passwordForget(username, name, phone);
+		//判断成功与否
 		if (forgermanager == null) {
+			//在控制台输出信息
 			System.out.println("此用户不存在");
 		} else {
+			//保存到全局变量
 			m = forgermanager;
-			//控制台输出提示
+			// 控制台输出提示
 			System.out.println("---------------信息核验成功----------");
-			//控制台输出提示
+			// 控制台输出提示
 			System.out.println("请输入新密码");
 			// 接收控制台输入的内容
 			String a = sc.next();

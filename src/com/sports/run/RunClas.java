@@ -24,8 +24,8 @@ public class RunClas {
 			if(sc.nextInt()==2){
 				switch (a) {
 				case 1: mr.passwordForget(); break;
-				case 2: break;
-				case 3: break;
+				case 2: tr.passwordForget(); break;
+				case 3: sr.passwordForget(); break;
 				}
 				continue;
 			}

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sports.entity.Student;
 import com.sports.entity.Teacher;
 import com.sports.util.JDBCUtil;
 
@@ -222,5 +223,40 @@ public class TeacherDao {
 		}
 		//返回
 		return t;
+	}
+	public Teacher passwordForget(String username, String name, String phone) {
+		// 一个Student变量
+				Teacher t = null;
+				try {
+					// sql语句
+					String sql = "select * from teacher where username=? and tname=? and phone=?";
+					// 获取sql执行器
+					PreparedStatement p = connection.prepareStatement(sql);
+					// 设置参数
+					p.setString(1, username);
+					// 设置参数
+					p.setString(2, name);
+					// 设置参数
+					p.setString(3, phone);
+					// 获取结果集
+					ResultSet eq = p.executeQuery();
+					// 遍历结果集
+					while (eq.next()) {
+						t=new Teacher();//new一个老师对象
+						t.setTid(eq.getInt(1));//设置属性
+						t.setRid(eq.getInt(2));//设置属性
+						t.setTgid(eq.getInt(3));//设置属性
+						t.setSportid(eq.getInt(4));//设置属性
+						t.setTname(eq.getString(5));//设置属性
+						t.setTpwd(eq.getString(6));//设置属性
+						t.setUsername(eq.getString(7));//设置属性
+						t.setPhone(eq.getString(8));//设置属性
+					}
+
+				} catch (Exception e) {// 异常捕获
+					e.printStackTrace();// 打印堆栈信息
+				}
+				// 返回
+				return t;
 	}
 }

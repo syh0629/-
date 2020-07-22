@@ -207,4 +207,55 @@ public class TeacherRun {
 		}
 
 	}
+	public void passwordForget() {
+		//控制台输出提示
+		System.out.println("请输入用户名");
+		// 接收控制台输入的内容
+		String username = sc.next();
+		//控制台输出提示
+		System.out.println("请输入姓名");
+		// 接收控制台输入的内容
+		String name = sc.next();
+		//控制台输出提示
+		System.out.println("请输入手机号");
+		// 接收控制台输入的内容
+		String phone = sc.next();
+		//查询学生信息
+		Teacher forgermanager = ted.passwordForget(username, name, phone);
+		if (forgermanager == null) {
+			//在控制台输入提示信息
+			System.out.println("此用户不存在");
+		} else {
+			//保存到全局变量
+			t = forgermanager;
+			//控制台输出提示
+			System.out.println("---------------信息核验成功----------");
+			//控制台输出提示
+			System.out.println("请输入新密码");
+			// 接收控制台输入的内容
+			String a = sc.next();
+			// 接收控制台输入的内容
+			System.out.println("请再输入一次");
+			// 判断两次输入的密码是否一致
+			if (a.equals(sc.next())) {
+				// 接收控制台输入的信息并调用当前对象的set方法将控制台输入的信息设置给实体类对象
+				t.setTpwd(a);
+				// 否则不退出
+			} else {
+				// 在控制台打印提示信息
+				System.out.println("两次输入不一致,请重新输入");
+			}
+			// 更新数据库的信息
+			int i = ted.updateTeacher(t);
+			// 更新成功返回1否则更新失败
+			if (i == 1) {
+				// 在控制台打印提示信息
+				System.out.println("修改成功");
+			} else {
+				// 在控制台打印提示信息
+				System.out.println("请重新修改");
+			}
+		}
+
+	}
 }
