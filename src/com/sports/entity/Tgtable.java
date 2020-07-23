@@ -53,7 +53,7 @@ public class Tgtable {
 	 * 获取当前类的所有信息并格式化为字符串
 	 */
 	public String toString() {
-		return "Tgtable [tgid=" + tgid + ", tgname=" + tgname + ", tgadd=" + tgadd + "]";
+		return "运动场地 [运动场编号=" + tgid + ", 运动场名称=" + tgname + ", 运动场地址=" + tgadd + "]";
 	}
 	
 }

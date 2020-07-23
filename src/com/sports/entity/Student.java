@@ -190,8 +190,7 @@ public class Student {
 	 */
 	@Override
 	public String toString() {
-		return "Student [sid=" + sid + ", sname=" + sname + ", spwd=" + spwd + ", tid=" + tid + ", tgid=" + tgid
-				+ ", sportid=" + sportid + ", rid=" + rid + ", username=" + username + ", phone=" + phone + "]";
+		return "学生列表 [学生编号=" + sid + ", 学生姓名=" + sname +", 用户名=" + username + ", 手机号=" + phone + "]";
 	}
 
 }

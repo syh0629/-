@@ -39,7 +39,7 @@ public class Sport {
 	 * 获取当前类的所有信息并格式化为字符串
 	 */
 	public String toString() {
-		return "Sport [sportid=" + sportid + ", sportname=" + sportname + "]";
+		return "运动项目 [运动编号=" + sportid + ", 运动项目=" + sportname + "]";
 	}
 	
 }

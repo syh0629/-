@@ -378,20 +378,23 @@ public class ManagerRun {
 			m = forgermanager;
 			// 控制台输出提示
 			System.out.println("---------------信息核验成功----------");
-			// 控制台输出提示
-			System.out.println("请输入新密码");
-			// 接收控制台输入的内容
-			String a = sc.next();
-			// 接收控制台输入的内容
-			System.out.println("请再输入一次");
-			// 判断两次输入的密码是否一致
-			if (a.equals(sc.next())) {
-				// 接收控制台输入的信息并调用当前对象的set方法将控制台输入的信息设置给实体类对象
-				m.setMpwd(a);
-				// 否则不退出
-			} else {
-				// 在控制台打印提示信息
-				System.out.println("两次输入不一致,请重新输入");
+			while(true){
+				// 控制台输出提示
+				System.out.println("请输入新密码");
+				// 接收控制台输入的内容
+				String a = sc.next();
+				// 接收控制台输入的内容
+				System.out.println("请再输入一次");
+				// 判断两次输入的密码是否一致
+				if (a.equals(sc.next())) {
+					// 接收控制台输入的信息并调用当前对象的set方法将控制台输入的信息设置给实体类对象
+					m.setMpwd(a);
+					break;
+					// 否则不退出
+				} else {
+					// 在控制台打印提示信息
+					System.out.println("两次输入不一致,请重新输入");
+				}
 			}
 			// 更新数据库的信息
 			int i = md.updateManager(m);

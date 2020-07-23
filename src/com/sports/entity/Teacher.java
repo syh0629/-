@@ -167,8 +167,7 @@ public class Teacher {
 
 	@Override
 	public String toString() {
-		return "Teacher [tid=" + tid + ", rid=" + rid + ", tgid=" + tgid + ", sportid=" + sportid + ", tname=" + tname
-				+ ", tpwd=" + tpwd + ", username=" + username + ", phone=" + phone + "]";
+		return "老师列表 [老师编号=" + tid + ", 用户名=" + username + ", 手机号=" + phone + "]";
 	}
 	
 
